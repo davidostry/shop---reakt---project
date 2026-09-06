@@ -1,15 +1,52 @@
-.navMain{
-    height: 15vh;
-    background-color:purple;
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    align-items: center;
-    padding: 15px;
+.header {
+    height: 70px;
+    background-color: purple;
+    color: white;
 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 30px;
 }
 
-.navLinks{
-    text-decoration: none;
-    margin-left: 15px;
+.logo {
     color: white;
+    text-decoration: none;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.nav-link:hover {
+    text-decoration: underline;
+}
+
+.favorites-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-left: 6px;
+
+    width: 22px;
+    height: 22px;
+
+    background-color: white;
+    color: purple;
+
+    border-radius: 50%;
+    font-size: 13px;
+    font-weight: bold;
 }

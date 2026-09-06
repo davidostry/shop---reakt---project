@@ -1,7 +1,9 @@
-import React from 'react'
+import "./Footer.css";
 
 export default function Footer() {
   return (
-    <div>כל הזכויות שמורות</div>
-  )
+    <footer className="footer">
+      <p>© 2026 Mini Shop</p>
+    </footer>
+  );
 }
