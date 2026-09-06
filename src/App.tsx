@@ -1,5 +1,4 @@
-import { Routes, Route } from "react-router";
-
+import { Route, Routes } from "react-router";
 import Layout from "./Layout";
 import HomePage from "./pages/HomePage";
 import FavoritesPage from "./pages/FavoritesPage";
@@ -9,22 +8,14 @@ export default function App() {
   return (
     <Routes>
       <Route element={<Layout />}>
+        <Route path="/" element={<HomePage />} />
 
-        <Route
-          path="/"
-          element={<HomePage />}
-        />
-
-        <Route
-          path="/favorites"
-          element={<FavoritesPage />}
-        />
+        <Route path="/favorites" element={<FavoritesPage />} />
 
         <Route
           path="/products/:id"
           element={<ProductDetailsPage />}
         />
-
       </Route>
     </Routes>
   );

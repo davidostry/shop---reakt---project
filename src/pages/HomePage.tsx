@@ -10,7 +10,7 @@ export default function HomePage() {
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
-      .then((res) => res.json())
+      .then((response) => response.json())
       .then((data) => {
         setProducts(data);
         setLoading(false);
@@ -21,36 +21,28 @@ export default function HomePage() {
   }, []);
 
   const filteredProducts = products.filter((product) =>
-    product.title
-      .toLowerCase()
-      .includes(search.toLowerCase())
+    product.title.toLowerCase().includes(search.toLowerCase())
   );
 
   if (loading) {
-    return <h2>Loading...</h2>;
+    return <p>Loading...</p>;
   }
 
   return (
-    <div>
-      <h1>Products</h1>
-
+    <main>
       <SearchBar
         value={search}
         onChange={setSearch}
       />
 
-      <p>
-        Products found: {filteredProducts.length}
-      </p>
-
-      <div className="products">
+      <section className="products">
         {filteredProducts.map((product) => (
           <ProductCard
             key={product.id}
             product={product}
           />
         ))}
-      </div>
-    </div>
+      </section>
+    </main>
   );
 }

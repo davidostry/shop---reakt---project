@@ -1,27 +1,20 @@
 import { Link, Outlet } from "react-router";
+import ThemeToggle from "./components/ThemeToggle";
 
 export default function Layout() {
   return (
     <>
       <header className="header">
-        <h2>Mini Shop</h2>
+        <h1>Mini Shop</h1>
 
         <nav>
-          <Link to="/">Products</Link>
-
-          <Link to="/favorites">
-            Favorites
-          </Link>
+          <Link to="/">Home</Link>
+          <Link to="/favorites">Favorites</Link>
+          <ThemeToggle />
         </nav>
       </header>
 
-      <main>
-        <Outlet />
-      </main>
-
-      <footer>
-        <p>Mini Shop</p>
-      </footer>
+      <Outlet />
     </>
   );
 }
