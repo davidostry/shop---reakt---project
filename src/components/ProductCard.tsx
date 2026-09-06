@@ -1,7 +1,23 @@
-import React from 'react'
+import { Link } from "react-router"
+import type { Product } from "../types/product"
+import useProduct from "../store/useProduct"
 
-export default function ProductCard() {
-  return (
-    <div>ProductCard</div>
-  )
+type ProductProps = {
+    product: Product
+}
+
+export default function ProductCard({product} : ProductProps) {
+    
+    const {addFavorite, removeFavorite }= useProduct
+
+
+    return (
+        <div>
+            <img
+            src= {product.image}
+            alt= {product.title}
+            />
+            <h2>{product.title}</h2>
+        </div>
+    );
 }

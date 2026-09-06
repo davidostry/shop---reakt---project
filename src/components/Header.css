@@ -1,0 +1,15 @@
+.navMain{
+    height: 15vh;
+    background-color:purple;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    padding: 15px;
+
+}
+
+.navLinks{
+    text-decoration: none;
+    margin-left: 15px;
+    color: white;
+}
