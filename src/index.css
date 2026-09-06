@@ -109,3 +109,20 @@ code {
   padding: 4px 8px;
   background: var(--code-bg);
 }
+body.light {
+    background-color: white;
+    color: #222;
+}
+
+body.dark {
+    background-color: #222;
+    color: white;
+}
+
+body.dark .main {
+    background-color: #222;
+}
+
+body.dark .footer {
+    background-color: #111;
+}

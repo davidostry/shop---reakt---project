@@ -1,7 +1,12 @@
-import React from 'react'
+import { useTheme } from "../context/ThemeContext";
+import "./ThemeToggle.css";
 
 export default function ThemeToggle() {
+  const { theme, toggleTheme } = useTheme();
+
   return (
-    <div>ThemeToggle</div>
-  )
+    <button className="theme-button" onClick={toggleTheme}>
+      {theme === "light" ? "🌙 Dark" : "☀️ Light"}
+    </button>
+  );
 }

@@ -1,4 +1,10 @@
-import { createContext, useContext, useState, type ReactNode } from "react";
+import {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  type ReactNode,
+} from "react";
 
 type Theme = "light" | "dark";
 
@@ -7,9 +13,13 @@ type ThemeContextType = {
   toggleTheme: () => void;
 };
 
-const ThemeContext = createContext<ThemeContextType | undefined>( undefined);
+const ThemeContext = createContext<ThemeContextType | undefined>(
+  undefined
+);
 
-type ThemeProviderProps = { children: ReactNode;};
+type ThemeProviderProps = {
+  children: ReactNode;
+};
 
 export function ThemeProvider({ children }: ThemeProviderProps) {
   const [theme, setTheme] = useState<Theme>("light");
@@ -20,10 +30,14 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
     );
   };
 
+  useEffect(() => {
+    document.body.className = theme;
+  }, [theme]);
+
   return (
-    <ThemeContext value={{ theme, toggleTheme }}>
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
       {children}
-    </ThemeContext>
+    </ThemeContext.Provider>
   );
 }
 

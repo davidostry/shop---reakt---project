@@ -1,0 +1,16 @@
+.theme-button {
+    border: none;
+    border-radius: 6px;
+
+    padding: 8px 12px;
+
+    background-color: white;
+    color: #222;
+
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.theme-button:hover {
+    background-color: #eeeeee;
+}
