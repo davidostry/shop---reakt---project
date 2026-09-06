@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import type { Product } from "../types/product";
 
-type FavoritesStore = {
+type ProductsStore = {
   favorites: Product[];
 
   addFavorite: (product: Product) => void;
@@ -9,7 +9,7 @@ type FavoritesStore = {
   isFavorite: (id: number) => boolean;
 };
 
-export const useFavoritesStore = create<FavoritesStore>((set, get) => ({
+export const useProductsStore = create<ProductsStore>((set, get) => ({
   favorites: [],
 
   addFavorite: (product) =>
@@ -19,9 +19,13 @@ export const useFavoritesStore = create<FavoritesStore>((set, get) => ({
 
   removeFavorite: (id) =>
     set((state) => ({
-      favorites: state.favorites.filter((product) => product.id !== id),
+      favorites: state.favorites.filter(
+        (product) => product.id !== id
+      ),
     })),
 
   isFavorite: (id) =>
-    get().favorites.some((product) => product.id === id),
+    get().favorites.some(
+      (product) => product.id === id
+    ),
 }));

@@ -1,17 +1,27 @@
-import { Outlet } from "react-router";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+import { Link, Outlet } from "react-router";
 
 export default function Layout() {
   return (
-    <div className="layout">
-      <Header />
+    <>
+      <header className="header">
+        <h2>Mini Shop</h2>
 
-      <main className="main">
+        <nav>
+          <Link to="/">Products</Link>
+
+          <Link to="/favorites">
+            Favorites
+          </Link>
+        </nav>
+      </header>
+
+      <main>
         <Outlet />
       </main>
 
-      <Footer />
-    </div>
+      <footer>
+        <p>Mini Shop</p>
+      </footer>
+    </>
   );
 }

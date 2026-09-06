@@ -1,0 +1,26 @@
+.product-card {
+  border: 1px solid #ddd;
+  padding: 20px;
+  text-align: center;
+  border-radius: 8px;
+}
+
+.product-card img {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+}
+
+.product-card h2 {
+  font-size: 18px;
+}
+
+.product-card p {
+  margin: 8px;
+}
+
+.product-card button {
+  margin: 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+}

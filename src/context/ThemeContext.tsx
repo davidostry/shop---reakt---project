@@ -1,52 +1,33 @@
-import {
-  createContext,
-  useContext,
-  useState,
-  useEffect,
-  type ReactNode,
-} from "react";
+import { useEffect, useRef } from "react";
+import "./SearchBar.css";
 
-type Theme = "light" | "dark";
-
-type ThemeContextType = {
-  theme: Theme;
-  toggleTheme: () => void;
+type SearchBarProps = {
+  value: string;
+  onChange: (value: string) => void;
 };
 
-const ThemeContext = createContext<ThemeContextType | undefined>(
-  undefined
-);
-
-type ThemeProviderProps = {
-  children: ReactNode;
-};
-
-export function ThemeProvider({ children }: ThemeProviderProps) {
-  const [theme, setTheme] = useState<Theme>("light");
-
-  const toggleTheme = () => {
-    setTheme((currentTheme) =>
-      currentTheme === "light" ? "dark" : "light"
-    );
-  };
+export default function SearchBar({
+  value,
+  onChange,
+}: SearchBarProps) {
+  const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    document.body.className = theme;
-  }, [theme]);
+    inputRef.current?.focus();
+  }, []);
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      {children}
-    </ThemeContext.Provider>
+    <div className="search-container">
+      <input
+        ref={inputRef}
+        className="search-input"
+        type="text"
+        placeholder="Search products..."
+        value={value}
+        onChange={(event) =>
+          onChange(event.target.value)
+        }
+      />
+    </div>
   );
-}
-
-export function useTheme() {
-  const context = useContext(ThemeContext);
-
-  if (!context) {
-    throw new Error("useTheme must be used inside ThemeProvider");
-  }
-
-  return context;
 }

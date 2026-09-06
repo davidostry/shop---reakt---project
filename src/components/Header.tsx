@@ -1,10 +1,10 @@
 import { Link } from "react-router";
-import { useFavoritesStore } from "../store/favoritesStore";
+import { useProductsStore } from "../store/favoritesStore";
 import ThemeToggle from "./ThemeToggle";
 import "./Header.css";
 
 export default function Header() {
-  const favorites = useFavoritesStore((state) => state.favorites);
+  const favorites = useProductsStore((state) => state.favorites);
 
   return (
     <header className="header">

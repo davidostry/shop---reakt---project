@@ -1,21 +1,31 @@
+import { Routes, Route } from "react-router";
 
-import './App.css'
-import Layout from './Layout'
-import { Route, Routes } from 'react-router'
-import FavoritesPage from './pages/FavoritesPage'
-import HomePage from './pages/HomePage'
+import Layout from "./Layout";
+import HomePage from "./pages/HomePage";
+import FavoritesPage from "./pages/FavoritesPage";
+import ProductDetailsPage from "./pages/ProductDetailsPage";
 
-function App() {
-
-
+export default function App() {
   return (
     <Routes>
       <Route element={<Layout />}>
-      <Route path="/" element={<HomePage url="https://fakestoreapi.com/products" />}/>
-      <Route path="/favorites" element={<FavoritesPage />}/>
-      </Route >
-    </Routes>
-  )
-}
 
-export default App
+        <Route
+          path="/"
+          element={<HomePage />}
+        />
+
+        <Route
+          path="/favorites"
+          element={<FavoritesPage />}
+        />
+
+        <Route
+          path="/products/:id"
+          element={<ProductDetailsPage />}
+        />
+
+      </Route>
+    </Routes>
+  );
+}

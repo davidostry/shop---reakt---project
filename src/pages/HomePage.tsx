@@ -1,64 +1,56 @@
-import { useState, useEffect, useRef } from 'react'
-import { data } from 'react-router'
-import type { Product } from '../types/product'
-import ProductCard from '../components/ProductCard'
+import { useEffect, useState } from "react";
+import SearchBar from "../components/SearchBar";
+import ProductCard from "../components/ProductCard";
+import type { Product } from "../types/product";
 
-type ProductProps = {
-    url: string
-}
+export default function HomePage() {
+  const [products, setProducts] = useState<Product[]>([]);
+  const [search, setSearch] = useState("");
+  const [loading, setLoading] = useState(true);
 
-export default function HomePage({ url }: ProductProps) {
+  useEffect(() => {
+    fetch("https://fakestoreapi.com/products")
+      .then((res) => res.json())
+      .then((data) => {
+        setProducts(data);
+        setLoading(false);
+      })
+      .catch(() => {
+        setLoading(false);
+      });
+  }, []);
 
-    const [products, setProducts] = useState<Product[]>([])
-    const [loading, setLoading] = useState(true)
-    const [search, setSearch] = useState("")
+  const filteredProducts = products.filter((product) =>
+    product.title
+      .toLowerCase()
+      .includes(search.toLowerCase())
+  );
 
+  if (loading) {
+    return <h2>Loading...</h2>;
+  }
 
-    useEffect(() => {
-        fetch(url)
-            .then((res) => {
-                if (!res.ok) {
-                    throw new Error("failed to fetch products")
-                }
-                return res.json()
-            })
-            .then((data) => {
-                setProducts(data)
-            })
-            .catch((e) => {
-                console.error(e);
-            })
-            .finally(() => {
-                setLoading(false)
-            });
-    }, [url])
+  return (
+    <div>
+      <h1>Products</h1>
 
-    const filteredProducts = products.filter(p =>
-        p.name.toLowerCase().includes(search.toLowerCase())
-    )
+      <SearchBar
+        value={search}
+        onChange={setSearch}
+      />
 
-    if (loading) {
-        return <h2>loading...</h2>
-    }
+      <p>
+        Products found: {filteredProducts.length}
+      </p>
 
-    return (
-        <div className='homePage'>
-            <h1>products</h1>
-
-            <input
-                type='text'
-                placeholder='search products...'
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                className='searchInput'
-            />
-            <div className='productsGrid'>
-                {filteredProducts.map((p)=>(
-                    <ProductCard
-                    key={p.id}
-                    product = {p}
-                ))}
-            </div>
-        </div>
-    )
+      <div className="products">
+        {filteredProducts.map((product) => (
+          <ProductCard
+            key={product.id}
+            product={product}
+          />
+        ))}
+      </div>
+    </div>
+  );
 }
