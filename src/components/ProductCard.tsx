@@ -1,6 +1,6 @@
 import { Link } from "react-router"
 import type { Product } from "../types/product"
-import useProduct from "../store/useProduct"
+import useProduct from "../store/favoritesStore"
 
 type ProductProps = {
     product: Product
