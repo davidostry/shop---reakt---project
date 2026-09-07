@@ -22,7 +22,7 @@ export default function SearchBar({
         ref={inputRef}
         className="search-input"
         type="text"
-        placeholder="Search products..."
+        placeholder=" Search products...                                                 🔎"
         value={value}
         onChange={(event) => onChange(event.target.value)}
       />
