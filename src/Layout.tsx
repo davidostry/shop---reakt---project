@@ -1,20 +1,15 @@
 import { Link, Outlet } from "react-router";
 import ThemeToggle from "./components/ThemeToggle";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 export default function Layout() {
   return (
     <>
-      <header className="header">
-        <h1>Mini Shop</h1>
 
-        <nav>
-          <Link to="/">Home</Link>
-          <Link to="/favorites">Favorites</Link>
-          <ThemeToggle />
-        </nav>
-      </header>
-
+      <Header />
       <Outlet />
+      <Footer />
     </>
   );
 }
