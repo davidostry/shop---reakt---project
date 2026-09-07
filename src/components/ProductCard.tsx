@@ -47,14 +47,14 @@ export default function ProductCard({
 
       <p>{product.category}</p>
 
-      <button onClick={handleFavorite}>
+      <button className="buttonCard" onClick={handleFavorite}>
         {favorite
           ? "Remove from favorites"
           : "Add to favorites"}
       </button>
 
       <Link to={`/products/${product.id}`}>
-        <button>View details</button>
+        <button className="buttonCard">View details</button>
       </Link>
     </div>
   );

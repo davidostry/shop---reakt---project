@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router";
 import type { Product } from "../types/product";
+import "../components/ProductCard.css"
 
 export default function ProductDetailsPage() {
   const { id } = useParams();
@@ -47,7 +48,7 @@ export default function ProductDetailsPage() {
       <p>Category: {product.category}</p>
 
       <Link to="/">
-        <button>Back to products</button>
+        <button className="buttonCard">Back to products</button>
       </Link>
     </div>
   );

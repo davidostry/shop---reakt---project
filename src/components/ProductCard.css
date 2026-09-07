@@ -2,7 +2,8 @@
   border: 1px solid #ddd;
   padding: 20px;
   text-align: center;
-  border-radius: 8px;
+  border-radius: 25px;
+  margin: 5%;
 }
 
 .product-card img {
@@ -23,4 +24,10 @@
   margin: 5px;
   padding: 10px 15px;
   cursor: pointer;
+}
+
+.buttonCard{
+  background-color: purple;
+  color: whitesmoke;
+  border-radius: 25px;
 }
