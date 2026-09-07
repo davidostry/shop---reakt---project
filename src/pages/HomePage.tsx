@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import SearchBar from "../components/SearchBar";
 import ProductCard from "../components/ProductCard";
 import type { Product } from "../types/product";
+import "./HomePage.css"
 
 export default function HomePage() {
   const [products, setProducts] = useState<Product[]>([]);

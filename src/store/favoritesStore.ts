@@ -13,9 +13,19 @@ export const useProductsStore = create<ProductsStore>((set, get) => ({
   favorites: [],
 
   addFavorite: (product) =>
-    set((state) => ({
-      favorites: [...state.favorites, product],
-    })),
+    set((state) => {
+      const alreadyFavorite = state.favorites.some(
+        (item) => item.id === product.id
+      );
+
+      if (alreadyFavorite) {
+        return state;
+      }
+
+      return {
+        favorites: [...state.favorites, product],
+      };
+    }),
 
   removeFavorite: (id) =>
     set((state) => ({

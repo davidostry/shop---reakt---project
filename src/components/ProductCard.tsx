@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 import type { Product } from "../types/product";
-import { useProductsStore } from "../store/favoritesStore"
+import { useProductsStore } from "../store/favoritesStore";
 import "./ProductCard.css";
 
 type ProductCardProps = {
@@ -18,11 +18,13 @@ export default function ProductCard({
     (state) => state.removeFavorite
   );
 
-  const isFavorite = useProductsStore(
-    (state) => state.isFavorite
+  const favorites = useProductsStore(
+    (state) => state.favorites
   );
 
-  const favorite = isFavorite(product.id);
+  const favorite = favorites.some(
+    (item) => item.id === product.id
+  );
 
   function handleFavorite() {
     if (favorite) {
@@ -46,7 +48,9 @@ export default function ProductCard({
       <p>{product.category}</p>
 
       <button onClick={handleFavorite}>
-        {favorite ? "Remove from favorites" : "Add to favorites"}
+        {favorite
+          ? "Remove from favorites"
+          : "Add to favorites"}
       </button>
 
       <Link to={`/products/${product.id}`}>

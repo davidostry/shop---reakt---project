@@ -7,7 +7,7 @@ import ProductDetailsPage from "./pages/ProductDetailsPage";
 export default function App() {
   return (
     <Routes>
-      <Route element={<Layout />}>
+      <Route element={<Layout />} >
         <Route path="/" element={<HomePage />} />
 
         <Route path="/favorites" element={<FavoritesPage />} />
